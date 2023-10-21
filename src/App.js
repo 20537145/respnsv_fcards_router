@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useDispatch, useSelector } from "react-redux";
+import "./App.css";
+import {
+  decrementHandler,
+  incrementHandler,
+  resetHandler,
+} from "./redux/actions";
 
 function App() {
+  const dispatch = useDispatch();
+  const handleIncrement = () => {
+    dispatch(incrementHandler());
+  };
+  const handleDecrement = () => {
+    dispatch(decrementHandler());
+  };
+  const handleReset = () => {
+    dispatch(resetHandler());
+  };
+  const counter = useSelector((state) => state.l7esba);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={handleIncrement}>zid</button>
+      <button onClick={handleDecrement}>na9s</button>
+      <button>{counter}</button>
+      <button onClick={handleReset}>safer</button>
     </div>
   );
 }
